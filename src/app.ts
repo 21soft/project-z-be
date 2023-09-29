@@ -6,7 +6,7 @@ import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
 import { specs } from "./config/swagger";
 import routes from "./routes";
-import { ServerConfig } from "config/config";
+import { ServerConfig } from "./config/config";
 
 // Create express server
 const app = express();
