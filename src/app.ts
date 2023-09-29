@@ -24,6 +24,6 @@ app.use(helmet());
 
 // Route config
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-app.use("/api", routes);
+app.use("/", routes);
 
 export default app

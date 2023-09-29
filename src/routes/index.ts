@@ -13,6 +13,6 @@ router.get('/', (req, res) => {
 
 // Assign route
 v1.use(AuthRoute)
-router.use('/v1', v1);
+router.use('/api/v1', v1);
 
 export default router;
