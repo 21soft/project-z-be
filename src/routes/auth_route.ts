@@ -2,7 +2,7 @@ import { Router } from "express";
 import { login, register } from "../controller/auth_controller";
 import { registerValidator } from "../validator/auth_validator";
 
-const router = Router()
+const router = Router();
 
 /**
  * @swagger
@@ -26,7 +26,7 @@ const router = Router()
 
 /**
  * @swagger
- * /api/v1/register:
+ * /register:
  *   post:
  *     summary: Register a new user
  *     description: Register a new user with email and password.
@@ -72,8 +72,8 @@ const router = Router()
  *               message: Internal Server Error
  *               errors: Registration failed
  */
-router.post('/register', registerValidator, register)
-router.post('/login', login)
-router.get('/profile')
+router.post("/register", registerValidator, register);
+router.post("/login", login);
+router.get("/profile");
 
-export default router
+export default router;

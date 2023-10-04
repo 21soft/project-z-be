@@ -1,26 +1,26 @@
-import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerJsdoc from "swagger-jsdoc";
 
-const options = {
-  definition: {
-    openapi: '3.0.0',
+const options: swaggerJsdoc.Options = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
     info: {
-      title: 'Project Z API with Swagger',
-      version: '1.0.0',
-      description: 'This is a REST API application made with Express and documented with Swagger'
+      title: "Project Z API with Swagger",
+      version: "1.0.0",
+      description:
+        "This is a REST API application made with Express and documented with Swagger",
     },
     servers: [
       {
-        url: 'http://localhost:8080',
-        description: 'Local server'
+        url: "http://project-z.nugrazurus.site/api/v1",
+        description: "Development server",
       },
       {
-        url: 'http://project-z.nugrazurus.site',
-        description: 'Development server'
-      }
+        url: "http://localhost:8080/api/v1",
+        description: "Local server",
+      },
     ],
   },
-  apis: ['./src/routes/*.ts'],
+  apis: ["./src/routes/*.ts"],
 };
 
 export const specs = swaggerJsdoc(options);
-

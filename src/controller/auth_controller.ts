@@ -1,9 +1,9 @@
+import { genSaltSync, hashSync } from "bcryptjs";
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { StatusCodes, ReasonPhrases } from "http-status-codes";
-import { create } from "../repository/user_repository";
-import { genSaltSync, hashSync } from "bcryptjs";
+import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { v4 } from "uuid";
+import { create } from "../repository/user_repository";
 import { getErrorMessage } from "../util/error";
 
 const salt = genSaltSync(10);
@@ -36,9 +36,9 @@ export const register = async (req: Request, res: Response) => {
     });
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        success: false,
-        message: ReasonPhrases.INTERNAL_SERVER_ERROR,
-        errors: getErrorMessage(error)
+      success: false,
+      message: ReasonPhrases.INTERNAL_SERVER_ERROR,
+      errors: getErrorMessage(error),
     });
   }
 };
