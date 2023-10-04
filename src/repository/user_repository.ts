@@ -1,20 +1,10 @@
-// import client from "config/database"
-import { Pool } from "pg"
+import { CreateUser } from "dto/user_dto";
+import knex from "../config/database";
+import { User } from "../entity/user";
 
-const pool = new Pool
+const userRepo = knex<User>("users");
 
 
-export const findById = async (id: number) => {
-    const client = await pool.connect()
-    try {
-        await client.query('BEGIN')
-        const queryStr = "SELECT * FROM users WHERE id = $1"
-        const res = await client.query(queryStr, [id])
-        await client.query('COMMIT')
-        return res
-    } catch (error) {
-        await client.query('ROLLBACK')
-    } finally {
-        await client.release()
-    }
-}
+export const create = async (req: CreateUser): Promise<User> => {
+  return await userRepo.insert(req, ["id", "uuid", "email", "displayName"]);
+};
