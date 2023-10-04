@@ -6,6 +6,10 @@ const knex = Knex({
     connection: DBConfig,
     migrations: {
         tableName: 'migrations'
+    },
+    pool: {
+        min: 0,
+        max: 7
     }
 })
 
