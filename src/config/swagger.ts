@@ -11,7 +11,7 @@ const options: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url: "http://project-z.nugrazurus.site/api/v1",
+        url: "https://project-z.nugrazurus.site/api/v1",
         description: "Development server",
       },
       {
