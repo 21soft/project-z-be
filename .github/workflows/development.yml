@@ -35,6 +35,5 @@ jobs:
           sudo rm -rf ./node-modules
           git pull
           npm ci
-          whoami
-          node --version
-          pm2 restart
+          npm run build
+          pm2 reload all
