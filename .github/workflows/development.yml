@@ -19,3 +19,19 @@ jobs:
       run: npm install
     - name: Run test
       run: npm run test
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: SSH to server and deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VM_HOST }}
+        username: ${{ secrets.VM_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.VM_PORT }}
+        script: |
+          cd ~/apps/project-z-be
+          git pull
+          npm run build
+          pm2 restart
