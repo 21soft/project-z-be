@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  backend-deployment:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -19,10 +19,8 @@ jobs:
       run: npm install
     - name: Run test
       run: npm run test
-  
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
+    - name: Run build
+      run: npm run build
     - name: SSH to server and deploy
       uses: appleboy/ssh-action@master
       with:
