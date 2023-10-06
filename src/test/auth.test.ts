@@ -3,6 +3,7 @@ import supertest from "supertest";
 import { v4 } from "uuid";
 import app from "../app";
 import * as userRepo from "../repository/user_repository";
+import * as jwt from "../util/jwt";
 
 describe("Register Controller", () => {
   it("should return success if data is valid", async () => {
@@ -57,6 +58,9 @@ describe("Login Controller", () => {
       email: "fulan@mail.com",
       password: hashSync("Password!23", 10),
     });
+
+    jest.spyOn(jwt, 'generateAccessToken').mockReturnValue('access-token')
+    jest.spyOn(jwt, 'generateRefreshToken').mockReturnValue('refresh-token')
 
     const res = await supertest(app).post("/api/v1/login").send({
       email: "fulan@mail.com",
