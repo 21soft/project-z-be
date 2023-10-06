@@ -1,4 +1,4 @@
-import { getErrorMessage } from "./error";
+import { getErrorMessage } from "../util/error";
 
 describe("", () => {
   it("should get message when its instance of error", () => {
