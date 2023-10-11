@@ -3,8 +3,6 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import swaggerUi from "swagger-ui-express";
-import { specs } from "./config/swagger";
 import routes from "./routes";
 import { ServerConfig } from "./config/config";
 
@@ -23,7 +21,6 @@ app.use(compression());
 app.use(helmet());
 
 // Route config
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.use("/", routes);
 
 export default app
